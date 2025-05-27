@@ -59,6 +59,17 @@ def test_get_registered_user(setup_user_db):
     assert "registered_at" in user_info
 
 
+def test_get_unregistered_user(setup_user_db):
+    # Given: 등록되지 않은은 사용자 ID
+    user_id = "unregistered_user"
+
+    # When: 사용자 정보 조회 서비스를 호출
+    user_info = get_user(user_id)
+
+    # Then: 사용자 정보 조회 서비스가 None를 반환해야함
+    assert user_info is None
+
+
 def test_delete_registered_user(setup_user_db):
     # Given: 이미 등록된 사용자 ID
     user_id = "aaron_peirsol"
